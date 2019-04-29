@@ -390,6 +390,12 @@ void ATPSPlayerController::ClientJoinResults_Implementation(const bool bJoinSucc
 	InitScoreboard();
 }
 
+void ATPSPlayerController::ClientSetSpectatorCamera_Implementation()
+{
+	UE_LOG(LogTPS, Warning, TEXT("ClientSetSpectatorCamera"));
+	//PlayerCameraManager->FreeCamOffset = FVector{ 0, 0, 0 };
+}
+
 void ATPSPlayerController::RespawnCharacter()
 {
 	check(GetNetMode() == NM_DedicatedServer);

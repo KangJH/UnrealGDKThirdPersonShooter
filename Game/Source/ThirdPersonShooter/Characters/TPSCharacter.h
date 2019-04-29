@@ -154,6 +154,14 @@ private:
 	UFUNCTION()
 	void OnRep_Team();
 
+	virtual void OnRep_Controller() override;
+
+	UFUNCTION(Client, Reliable)
+	void PrintMessage();
+
+	UFUNCTION(Client, Reliable)
+	void PrintSecondMessage();
+
 	UPROPERTY(VisibleAnywhere, Replicated)
 	class AWeapon* EquippedWeapon;
 

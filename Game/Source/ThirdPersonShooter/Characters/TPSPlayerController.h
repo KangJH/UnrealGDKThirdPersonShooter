@@ -53,6 +53,9 @@ public:
 	// Will populate "NewPlayerName" with a default value if empty.
 	void TryJoinGame(const FString& NewPlayerName, const ETPSTeam NewPlayerTeam);
 
+	UFUNCTION(Client, Reliable)
+	void ClientSetSpectatorCamera();
+
 protected:
 	virtual void SetupInputComponent() override;
 

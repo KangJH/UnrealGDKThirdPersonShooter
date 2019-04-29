@@ -21,6 +21,8 @@
 #include "Weapons/InstantWeapon.h"
 
 
+#pragma optimize("", off)
+
 static const FName kRightGunSocketName("GunSocket_r");
 
 ATPSCharacter::ATPSCharacter(const FObjectInitializer& ObjectInitializer)
@@ -102,6 +104,7 @@ void ATPSCharacter::Tick(float DeltaSeconds)
 	{
 		UpdateAimRotation(LocalAimUpdateThreshold);
 	}
+	//PrintMessage();
 
 	Super::Tick(DeltaSeconds);
 }
@@ -490,6 +493,35 @@ void ATPSCharacter::OnRep_Team()
 	}
 
 	UpdateTeamColor();
+}
+
+void ATPSCharacter::OnRep_Controller()
+{
+	UE_LOG(LogTPS, Warning, TEXT("OnRep_Controller"));
+}
+
+void ATPSCharacter::PrintSecondMessage_Implementation()
+{
+	if (HasAuthority())
+	{
+		UE_LOG(LogTPS, Warning, TEXT("Second RPC has been called on server"));
+	}
+	else
+	{
+		UE_LOG(LogTPS, Warning, TEXT("Second RPC has been called on client"));
+	}
+}
+
+void ATPSCharacter::PrintMessage_Implementation()
+{
+	if (HasAuthority())
+	{
+		UE_LOG(LogTPS, Warning, TEXT("RPC has been called on server"));
+	}
+	else
+	{
+		UE_LOG(LogTPS, Warning, TEXT("RPC has been called on client"));
+	}
 }
 
 FVector ATPSCharacter::GetLineTraceStart() const
