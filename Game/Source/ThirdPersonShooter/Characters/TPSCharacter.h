@@ -157,7 +157,7 @@ private:
 	virtual void OnRep_Controller() override;
 
 	UFUNCTION(Client, Reliable)
-	void PrintMessage();
+	void PrintMessage(int x, int y);
 
 	UFUNCTION(Client, Reliable)
 	void PrintSecondMessage();

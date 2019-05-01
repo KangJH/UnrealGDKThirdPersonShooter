@@ -512,15 +512,15 @@ void ATPSCharacter::PrintSecondMessage_Implementation()
 	}
 }
 
-void ATPSCharacter::PrintMessage_Implementation()
+void ATPSCharacter::PrintMessage_Implementation(int x, int y)
 {
 	if (HasAuthority())
 	{
-		UE_LOG(LogTPS, Warning, TEXT("RPC has been called on server"));
+		UE_LOG(LogTPS, Warning, TEXT("RPC has been called on server with arg %d"), x);
 	}
 	else
 	{
-		UE_LOG(LogTPS, Warning, TEXT("RPC has been called on client"));
+		UE_LOG(LogTPS, Warning, TEXT("RPC has been called on client with arg %d"), x);
 	}
 }
 
